@@ -30,6 +30,13 @@ bitmap_bianco_nero = [
 
 
 def colore_bianco_nero(pixel: bool) -> str:
+    """
+    Funzione che restituisce una stringa che rappresenta il colore bianco se il valore booleano verificato è True
+    e di colore nero se il valore è False
+    
+    param pixel: un valore booleano, quindi o True o False
+    returns: una stringa rappresentante il colore bianco o il colore nero
+    """
     bianco = "rgb(255, 255, 255)"
     nero = "rgb(0, 0, 0)"
     if pixel == True:
@@ -38,6 +45,12 @@ def colore_bianco_nero(pixel: bool) -> str:
         return nero
         
 def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
+    """
+    Funzione che restituisce una immagine composta da quadrati bianchi o neri affiancati orizzontalmente e verticalmente
+    
+    param bitmap: Una lista contenente una seconda lista composta dai valori booleani True o False
+    returns: una immagine composta da quadrati bianchi o neri affiancati orizzontalmente e verticalmente
+    """
     riga_prec = immagine_vuota()
     for riga in bitmap_bianco_nero:
         lista_immagini = [
@@ -50,19 +63,4 @@ def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
 
     return composizione_immagine
 
-visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
-
-# def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
-#     riga_prec = immagine_vuota()
-#     riga = immagine_vuota()
-#     for lista in bitmap:
-#         composizione =affianca_verticale(riga_prec, riga)
-#         riga_prec = composizione
-#         # costruisco la lista di immagini a partire dai True e False
-#         lista_immagini = [
-#             render_pixel(elemento)
-#             for elemento in lista
-#             ]
-#         affianca_molte(lista_immagini)
-#     return composizione
-# visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
+#visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
