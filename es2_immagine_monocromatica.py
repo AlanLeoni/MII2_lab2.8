@@ -1,13 +1,13 @@
 """
 Il file contiene funzioni per:
-- creare quadrati colorati
+- creare quadrati di colore monocromatico
 - costruire stringhe che rappresentano colori monocromatici
 - costruire immagini composte da quadrati di colore monocromatico
 """
 
 from sys import float_repr_style
-from img_lib_v0_51 import affianca_verticale, altezza_immagine, immagine_vuota, larghezza_immagine, sovrapponi, rettangolo, Immagine, visualizza_immagine
-from testing_util import affianca_molte, controlla_valore_atteso
+from lib.img_lib_v0_51 import affianca_verticale, altezza_immagine, immagine_vuota, larghezza_immagine, sovrapponi, rettangolo, Immagine, visualizza_immagine
+from lib.testing_util import affianca_molte, controlla_valore_atteso
 from typing import List
 
 
@@ -79,6 +79,10 @@ def render_bitmap_monocromatico(bitmap: List[List[int]]) -> Immagine:
 
 # Test
 controlla_valore_atteso(larghezza_immagine(render_bitmap_monocromatico([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
+controlla_valore_atteso(altezza_immagine(render_bitmap_monocromatico([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 2) 
+controlla_valore_atteso(larghezza_immagine(render_bitmap_monocromatico([[0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
+controlla_valore_atteso(altezza_immagine(render_bitmap_monocromatico([[0, 0, 0]])), PIXEL_SIZE + 2 )
+controlla_valore_atteso(altezza_immagine(render_bitmap_monocromatico([[]])), 0)
 
 
 #visualizza_immagine(render_bitmap_monocromatico(bitmap_monocromatico))

@@ -1,6 +1,6 @@
 import sys
 from PIL.Image import Image
-from img_lib_v0_51 import (
+from lib.img_lib_v0_51 import (
     triangolo,
     testo,
     rettangolo,

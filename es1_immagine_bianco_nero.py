@@ -7,8 +7,8 @@ Il file contiene funzioni per:
 
 
 from sys import float_repr_style
-from img_lib_v0_51 import affianca_verticale, altezza_immagine, immagine_vuota, larghezza_immagine, sovrapponi, rettangolo, Immagine, visualizza_immagine
-from testing_util import affianca_molte, controlla_valore_atteso
+from lib.img_lib_v0_51 import affianca_verticale, altezza_immagine, immagine_vuota, larghezza_immagine, sovrapponi, rettangolo, Immagine, visualizza_immagine
+from lib.testing_util import affianca_molte, controlla_valore_atteso
 from typing import List
 
 
@@ -93,4 +93,4 @@ controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0]]))
 controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[]])), 0)
 
 
-#visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
+# visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
