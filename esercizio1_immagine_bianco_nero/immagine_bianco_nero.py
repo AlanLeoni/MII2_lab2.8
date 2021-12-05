@@ -74,8 +74,8 @@ def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
 # Test
 controlla_valore_atteso(larghezza_immagine(render_bitmap_bianco_nero([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
 controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 2) 
+controlla_valore_atteso(larghezza_immagine(render_bitmap_bianco_nero([[0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
 controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0]])), PIXEL_SIZE + 2 )
-
-visualizza_immagine(render_bitmap_bianco_nero([[0, 0, 0]]))
+controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[]])), 0)
 
 #visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
