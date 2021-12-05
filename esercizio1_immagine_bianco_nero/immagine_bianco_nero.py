@@ -17,9 +17,9 @@ def render_pixel(colore: str) -> Immagine:
         rettangolo(PIXEL_SIZE, PIXEL_SIZE, colore),
         rettangolo(PIXEL_SIZE + 2, PIXEL_SIZE + 2, "grey"))
     
-
-#controlla_valore_atteso(larghezza_immagine(render_pixel("rgb(255,0,0)")), PIXEL_SIZE + 2)
-#controlla_valore_atteso(altezza_immagine(render_pixel("rgb(255,0,0)")), PIXEL_SIZE + 2)
+# Test
+controlla_valore_atteso(larghezza_immagine(render_pixel("rgb(255,0,0)")), PIXEL_SIZE + 2)
+controlla_valore_atteso(altezza_immagine(render_pixel("rgb(255,0,0)")), PIXEL_SIZE + 2)
 
 # Mappa di pixel booleani (bianco == True, nero == False)
 bitmap_bianco_nero = [
@@ -41,9 +41,17 @@ def colore_bianco_nero(pixel: bool) -> str:
     nero = "rgb(0, 0, 0)"
     if pixel == True:
         return bianco
-    else:
+    elif pixel == False:
         return nero
+    else:
+       return
         
+# Test
+controlla_valore_atteso(colore_bianco_nero(True), "rgb(255, 255, 255)")
+controlla_valore_atteso(colore_bianco_nero(False), "rgb(0, 0, 0)")
+controlla_valore_atteso(colore_bianco_nero(3), None)
+
+ 
 def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
     """
     Funzione che restituisce una immagine composta da quadrati bianchi o neri affiancati orizzontalmente e verticalmente
@@ -52,7 +60,7 @@ def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
     returns: una immagine composta da quadrati bianchi o neri affiancati orizzontalmente e verticalmente
     """
     riga_prec = immagine_vuota()
-    for riga in bitmap_bianco_nero:
+    for riga in bitmap:
         lista_immagini = [
             render_pixel(colore_bianco_nero(pixel))
             for pixel in riga
@@ -62,5 +70,12 @@ def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
         riga_prec = composizione_immagine
 
     return composizione_immagine
+
+# Test
+controlla_valore_atteso(larghezza_immagine(render_bitmap_bianco_nero([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
+controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 2) 
+controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0]])), PIXEL_SIZE + 2 )
+
+visualizza_immagine(render_bitmap_bianco_nero([[0, 0, 0]]))
 
 #visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
