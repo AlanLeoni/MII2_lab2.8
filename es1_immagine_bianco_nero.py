@@ -1,9 +1,19 @@
+"""
+Il file contiene funzioni per:
+- creare quadrati colorati
+- costruire stringhe che rappresentano il colore bianco o il colore nero
+- costruire immagini composte da quadrati di colore bianco o di colore nero
+"""
+
+
 from sys import float_repr_style
 from img_lib_v0_51 import affianca_verticale, altezza_immagine, immagine_vuota, larghezza_immagine, sovrapponi, rettangolo, Immagine, visualizza_immagine
 from testing_util import affianca_molte, controlla_valore_atteso
 from typing import List
 
+
 PIXEL_SIZE = 100
+
 
 def render_pixel(colore: str) -> Immagine:
     """
@@ -16,10 +26,13 @@ def render_pixel(colore: str) -> Immagine:
     return sovrapponi(
         rettangolo(PIXEL_SIZE, PIXEL_SIZE, colore),
         rettangolo(PIXEL_SIZE + 2, PIXEL_SIZE + 2, "grey"))
-    
+
+
+
 # Test
 controlla_valore_atteso(larghezza_immagine(render_pixel("rgb(255,0,0)")), PIXEL_SIZE + 2)
 controlla_valore_atteso(altezza_immagine(render_pixel("rgb(255,0,0)")), PIXEL_SIZE + 2)
+
 
 # Mappa di pixel booleani (bianco == True, nero == False)
 bitmap_bianco_nero = [
@@ -45,6 +58,7 @@ def colore_bianco_nero(pixel: bool) -> str:
         return nero
     else:
        return
+
         
 # Test
 controlla_valore_atteso(colore_bianco_nero(True), "rgb(255, 255, 255)")
@@ -68,8 +82,8 @@ def render_bitmap_bianco_nero(bitmap: List[List[bool]]) -> Immagine:
         composizione_riga = affianca_molte(lista_immagini)
         composizione_immagine = affianca_verticale(riga_prec, composizione_riga)
         riga_prec = composizione_immagine
-
     return composizione_immagine
+
 
 # Test
 controlla_valore_atteso(larghezza_immagine(render_bitmap_bianco_nero([[0, 0, 0], [0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
@@ -77,5 +91,6 @@ controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0], [
 controlla_valore_atteso(larghezza_immagine(render_bitmap_bianco_nero([[0, 0, 0]])), (PIXEL_SIZE + 2)* 3)
 controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[0, 0, 0]])), PIXEL_SIZE + 2 )
 controlla_valore_atteso(altezza_immagine(render_bitmap_bianco_nero([[]])), 0)
+
 
 #visualizza_immagine(render_bitmap_bianco_nero(bitmap_bianco_nero))
